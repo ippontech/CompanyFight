@@ -1,0 +1,8 @@
+.idea
+company-fight.iml
+.classpath
+.project
+.settings
+target
+.merge_file*
+.DS_Store
