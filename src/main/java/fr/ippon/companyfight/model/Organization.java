@@ -2,6 +2,7 @@ package fr.ippon.companyfight.model;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -14,6 +15,8 @@ public class Organization implements Serializable {
     private int followersCount;
 
     private String avatarUrl;
+
+    private Date updatedAt;
 
     @ManyToMany(fetch = FetchType.EAGER)
     private Set<Person> members = new HashSet<Person>();
@@ -43,6 +46,14 @@ public class Organization implements Serializable {
 
     public void setAvatarUrl(String avatarUrl) {
         this.avatarUrl = avatarUrl;
+    }
+
+    public Date getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(Date updatedAt) {
+        this.updatedAt = updatedAt;
     }
 
     public Set<Person> getMembers() {
@@ -90,9 +101,9 @@ public class Organization implements Serializable {
     public String toString() {
         return "Organization{" +
                 "id='" + id + '\'' +
-                ", followers=" + followersCount +
-                ", members=" + members +
-                ", repositories=" + repositories +
+                ", followersCount=" + followersCount +
+                ", avatarUrl='" + avatarUrl + '\'' +
+                ", updatedAt=" + updatedAt +
                 "} " + super.toString();
     }
 }

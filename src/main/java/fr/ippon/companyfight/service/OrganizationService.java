@@ -7,6 +7,8 @@ import fr.ippon.companyfight.repository.PersonRepository;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.logging.Logger;
 
 @Stateless
@@ -28,7 +30,14 @@ public class OrganizationService {
         Organization existingOrganization = organizationRepository.findOrganization(name);
         if (existingOrganization != null) {
             log.info("Organization already exists!");
-            return existingOrganization;
+            Calendar testCalendar = Calendar.getInstance();
+            testCalendar.add(Calendar.MONTH, -1);
+            if (existingOrganization.getUpdatedAt().after(testCalendar.getTime())) {
+                return existingOrganization;
+            } else {
+                log.info("The organization is more than one month old, refreshing it!");
+                organizationRepository.deleteOrganization(existingOrganization);
+            }
         }
         log.info("Initializing an organization from Github");
         Organization organization = githubService.fetchOrganizationFromGithub(name);
@@ -37,6 +46,7 @@ public class OrganizationService {
             for (Person person : organization.getMembers()) {
                 personRepository.createOrUpdatePerson(person);
             }
+            organization.setUpdatedAt(Calendar.getInstance().getTime());
             organizationRepository.createOrganization(organization);
             return organization;
         } else {
