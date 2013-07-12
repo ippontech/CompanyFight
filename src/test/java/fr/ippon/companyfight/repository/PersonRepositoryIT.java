@@ -5,13 +5,16 @@ import fr.ippon.companyfight.model.Person;
 import fr.ippon.companyfight.model.Repository;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
+import org.jboss.shrinkwrap.api.Archive;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.asset.EmptyAsset;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
+import org.jboss.shrinkwrap.api.spec.WebArchive;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import javax.inject.Inject;
+import javax.persistence.EntityManager;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -24,10 +27,13 @@ public class PersonRepositoryIT {
     private PersonRepository personRepository;
 
     @Deployment
-    public static JavaArchive jar() {
-        return ShrinkWrap.create(JavaArchive.class)
-                .addClasses(Organization.class, Person.class, Repository.class)
-                .addAsManifestResource(EmptyAsset.INSTANCE, "beans.xml");
+    public static Archive<?> jar() {
+        return ShrinkWrap.create(WebArchive.class)
+                .addPackage(Person.class.getPackage())
+                .addPackage(PersonRepository.class.getPackage())
+                .addAsResource("test-persistence.xml", "META-INF/persistence.xml")
+                .addAsWebInfResource("jbossas-ds.xml")
+                .addAsWebInfResource(EmptyAsset.INSTANCE, "beans.xml");
     }
 
     @Test

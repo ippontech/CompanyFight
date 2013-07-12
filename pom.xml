@@ -15,7 +15,7 @@
         <version.derby>10.10.1.1</version.derby>
         <version.junit>4.11</version.junit>
         <version.mockito>1.9.5</version.mockito>
-        <version.arquillian>1.0.3.Final</version.arquillian>
+        <version.arquillian>1.1.0.Final</version.arquillian>
         <version.arquillian.jboss>7.2.0.Final</version.arquillian.jboss>
 
         <!--Maven Plugins-->
@@ -55,6 +55,14 @@
             <groupId>javax.enterprise</groupId>
             <artifactId>cdi-api</artifactId>
             <version>1.1-20130403</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <!-- Transactions -->
+        <dependency>
+            <groupId>javax.transaction</groupId>
+            <artifactId>jta</artifactId>
+            <version>1.1</version>
             <scope>provided</scope>
         </dependency>
 
@@ -127,6 +135,28 @@
             <scope>provided</scope>
         </dependency>
 
+
+        <!-- Postgresql driver -->
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>${version.postgresql.driver}</version>
+        </dependency>
+
+        <!-- Other libraires used -->
+        <dependency>
+            <groupId>org.kohsuke</groupId>
+            <artifactId>github-api</artifactId>
+            <version>1.42</version>
+        </dependency>
+
+        <!-- Tests -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <version>1.7.5</version>
+            <scope>test</scope>
+        </dependency>
         <dependency>
             <groupId>org.mockito</groupId>
             <artifactId>mockito-all</artifactId>
@@ -150,19 +180,11 @@
             <version>${version.arquillian.jboss}</version>
             <scope>test</scope>
         </dependency>
-
-        <!-- Postgresql driver -->
         <dependency>
-            <groupId>org.postgresql</groupId>
-            <artifactId>postgresql</artifactId>
-            <version>${version.postgresql.driver}</version>
-        </dependency>
-
-        <!-- Other libraires used -->
-        <dependency>
-            <groupId>org.kohsuke</groupId>
-            <artifactId>github-api</artifactId>
-            <version>1.42</version>
+            <groupId>org.jboss.weld</groupId>
+            <artifactId>weld-core</artifactId>
+            <version>2.0.2.Final</version>
+            <scope>test</scope>
         </dependency>
 
     </dependencies>

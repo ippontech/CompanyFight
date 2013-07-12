@@ -9,7 +9,10 @@
         <property name="deploymentExportPath">target/arquillian</property>
     </engine>
 
-    <container qualifier="jboss-embedded" default="true">
+    <container qualifier="jbossas-managed" default="true">
+        <configuration>
+            <property name="jbossHome">/Users/julien/Applications/jboss-as-7.1.1.Final</property>
+        </configuration>
     </container>
 
 </arquillian>
