@@ -16,6 +16,7 @@ public class Organization implements Serializable {
 
     private String avatarUrl;
 
+    @Temporal(TemporalType.DATE)
     private Date updatedAt;
 
     @ManyToMany(fetch = FetchType.EAGER)
