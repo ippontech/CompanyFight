@@ -6,8 +6,8 @@ import java.util.Set;
 
 @Entity
 @NamedQuery(
-        name="findAllPersons",
-        query="SELECT p FROM Person p"
+        name = "findAllPersons",
+        query = "SELECT p FROM Person p"
 )
 public class Person implements Serializable {
 

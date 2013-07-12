@@ -8,7 +8,6 @@ import fr.ippon.companyfight.repository.PersonRepository;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.logging.Logger;
 
 @Stateless
