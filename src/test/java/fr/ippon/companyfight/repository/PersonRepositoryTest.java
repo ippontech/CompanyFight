@@ -10,21 +10,31 @@ import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.asset.EmptyAsset;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
 import org.jboss.shrinkwrap.api.spec.WebArchive;
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.transaction.UserTransaction;
 import java.util.HashSet;
 import java.util.Set;
 
 import static org.junit.Assert.*;
 
 @RunWith(Arquillian.class)
-public class PersonRepositoryIT {
+public class PersonRepositoryTest {
 
     @Inject
     private PersonRepository personRepository;
+
+    @Inject
+    UserTransaction utx;
+
+    @PersistenceContext
+    private EntityManager em;
 
     @Deployment
     public static Archive<?> jar() {
@@ -32,8 +42,19 @@ public class PersonRepositoryIT {
                 .addPackage(Person.class.getPackage())
                 .addPackage(PersonRepository.class.getPackage())
                 .addAsResource("test-persistence.xml", "META-INF/persistence.xml")
-                .addAsWebInfResource("jbossas-ds.xml")
+                //.addAsWebInfResource("jbossas-ds.xml")
                 .addAsWebInfResource(EmptyAsset.INSTANCE, "beans.xml");
+    }
+
+    @Before
+    public void preparePersistenceTest() throws Exception {
+        utx.begin();
+        em.joinTransaction();
+    }
+
+    @After
+    public void commitTransaction() throws Exception {
+        utx.commit();
     }
 
     @Test
@@ -44,28 +65,12 @@ public class PersonRepositoryIT {
         person.setFollowersCount(10);
         person.setAvatarUrl("http://avatar.url");
 
-        Repository repo = new Repository();
-        repo.setName("test-repo");
-        repo.setForks(3);
-        repo.setUrl("http://test-repo.url");
-
-        Set<Repository> repos = new HashSet<Repository>();
-        repos.add(repo);
-
-        person.setRepositories(repos);
-
         personRepository.createOrUpdatePerson(person);
 
         Person testPerson = personRepository.findPerson("test-login");
         assertNotNull(testPerson);
         assertEquals(10, testPerson.getFollowersCount());
         assertEquals("http://avatar.url", testPerson.getAvatarUrl());
-        assertEquals(1, testPerson.getRepositories().size());
-
-        Repository testRepo = testPerson.getRepositories().iterator().next();
-        assertEquals("test-repo", testRepo.getName());
-        assertEquals(3, testRepo.getForks());
-        assertEquals("http://test-repo.url", testRepo.getUrl());
-
+        assertEquals(0, testPerson.getRepositories().size());
     }
 }

@@ -2,6 +2,7 @@ package fr.ippon.companyfight.model;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -19,7 +20,7 @@ public class Person implements Serializable {
     private String avatarUrl;
 
     @OneToMany(fetch = FetchType.EAGER)
-    private Set<Repository> repositories;
+    private Set<Repository> repositories  = new HashSet<Repository>();
 
     public String getLogin() {
         return login;

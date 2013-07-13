@@ -5,11 +5,12 @@ import fr.ippon.companyfight.model.Organization;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 
 @ApplicationScoped
 public class OrganizationRepository {
 
-    @Inject
+    @PersistenceContext
     private EntityManager em;
 
     public void createOrganization(Organization organization) {

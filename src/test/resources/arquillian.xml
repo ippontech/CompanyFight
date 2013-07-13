@@ -9,9 +9,16 @@
         <property name="deploymentExportPath">target/arquillian</property>
     </engine>
 
-    <container qualifier="jbossas-managed" default="true">
+    <container qualifier="jbossas-managed">
         <configuration>
             <property name="jbossHome">/Users/julien/Applications/jboss-as-7.1.1.Final</property>
+        </configuration>
+    </container>
+
+    <container qualifier="jbossas-remote" default="true">
+        <configuration>
+            <property name="username">admin</property>
+            <property name="password">manager</property>
         </configuration>
     </container>
 
