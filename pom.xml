@@ -117,6 +117,13 @@
 
         <!-- Now we declare any tools needed -->
 
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>4.0.1.Final</version>
+            <scope>provided</scope>
+        </dependency>
+
         <!-- Annotation processor to generate the JPA 2.0 metamodel classes
             for typesafe criteria queries -->
         <dependency>
