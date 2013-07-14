@@ -22,6 +22,10 @@ public class PersonRepository {
         return em.createNamedQuery("findAllPersons").getResultList();
     }
 
+    public List<Person> findPersonsOrderedByFollowersCount() {
+        return em.createNamedQuery("findPersonsOrderedByFollowersCount").getResultList();
+    }
+
     public Person findPerson(String login) {
         return em.find(Person.class, login);
     }

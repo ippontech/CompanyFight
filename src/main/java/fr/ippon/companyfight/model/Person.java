@@ -6,10 +6,17 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@NamedQuery(
-        name = "findAllPersons",
-        query = "SELECT p FROM Person p"
-)
+@NamedQueries({
+        @NamedQuery(
+                name = "findAllPersons",
+                query = "SELECT p FROM Person p"
+        ),
+        @NamedQuery(
+                name = "findPersonsOrderedByFollowersCount",
+                query = "SELECT p FROM Person p ORDER BY p.followersCount DESC"
+        )
+
+})
 public class Person implements Serializable {
 
     @Id
