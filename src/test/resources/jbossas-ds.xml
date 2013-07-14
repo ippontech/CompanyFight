@@ -5,7 +5,7 @@
         http://www.jboss.org/ironjacamar/schema
         http://docs.jboss.org/ironjacamar/schema/datasources_1_0.xsd">
     <datasource enabled="true"
-                jndi-name="jboss/datasources/CompanyFight"
+                jndi-name="jboss/datasources/test/CompanyFight"
                 pool-name="ArquillianEmbeddedH2Pool">
         <connection-url>jdbc:h2:mem:arquillian;DB_CLOSE_DELAY=-1</connection-url>
         <driver>h2</driver>
