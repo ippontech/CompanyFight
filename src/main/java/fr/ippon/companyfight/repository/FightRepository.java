@@ -2,7 +2,6 @@ package fr.ippon.companyfight.repository;
 
 import fr.ippon.companyfight.model.Fight;
 import fr.ippon.companyfight.model.Organization;
-import fr.ippon.companyfight.model.Person;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.persistence.EntityManager;

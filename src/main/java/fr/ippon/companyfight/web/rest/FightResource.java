@@ -1,15 +1,12 @@
 package fr.ippon.companyfight.web.rest;
 
-import fr.ippon.companyfight.model.Fight;
-import fr.ippon.companyfight.model.Organization;
 import fr.ippon.companyfight.service.FightService;
-import fr.ippon.companyfight.service.OrganizationService;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
-import javax.ws.rs.*;
-import javax.ws.rs.core.MediaType;
-import java.util.List;
+import javax.ws.rs.POST;
+import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import java.util.logging.Logger;
 
 @Path("/fight")

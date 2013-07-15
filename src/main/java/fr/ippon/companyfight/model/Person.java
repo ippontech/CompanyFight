@@ -27,7 +27,7 @@ public class Person implements Serializable {
     private String avatarUrl;
 
     @OneToMany(fetch = FetchType.EAGER)
-    private Set<Repository> repositories  = new HashSet<Repository>();
+    private Set<Repository> repositories = new HashSet<Repository>();
 
     public String getLogin() {
         return login;

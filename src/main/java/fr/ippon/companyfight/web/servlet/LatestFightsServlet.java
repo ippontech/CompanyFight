@@ -14,7 +14,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.logging.Logger;
 
-@WebServlet(name= "LatestFights", urlPatterns = "/latest-fights")
+@WebServlet(name = "LatestFights", urlPatterns = "/latest-fights")
 public class LatestFightsServlet extends HttpServlet {
 
     @Inject
