@@ -14,27 +14,27 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
 
-    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/css/bootstrap.min.css">
     <style>
         body {
             padding-top: 60px;
             padding-bottom: 40px;
         }
     </style>
-    <link rel="stylesheet" href="css/bootstrap-responsive.min.css">
-    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/css/bootstrap-responsive.min.css">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/css/main.css">
 
-    <script src="js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+    <script src="<%=request.getContextPath()%>/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
 </head>
-<body ng-app>
+<body>
 <!--[if lt IE 7]>
 <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
     your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to
     improve your experience.</p>
 <![endif]-->
 
-<div class="container">
+<div class="container" ng-app>
 
     <a href="https://github.com/ippontech/CompanyFight"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub"></a>
 
@@ -43,8 +43,9 @@
         <p>
             This application fetches data from Github (repositories, forks, members, ...) and calculates which company is the best on Github
         </p>
+        <a href="https://twitter.com/share" class="twitter-share-button" data-text="Have a fight with my company at http://fight.ippon.fr" data-count="none">Tweet</a>
         <br/>
-        <a href="https://twitter.com/share" class="twitter-share-button" data-text="Have a fight with my company at http://fight.ippon.fr" data-size="large" data-count="none">Tweet</a>
+        [ <a href="<%=request.getContextPath()%>/latest-fights">Latest fights</a> | <a href="<%=request.getContextPath()%>/high-scores">High scores</a> ]
         <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
     </div>
     <form novalidate class="simple-form">
@@ -87,7 +88,7 @@
             <div ng-show="company1.avatarUrl == null && company2.avatarUrl == null">
                 <div class="row">
                     <div class="span12 text-center">
-                        <img src="img/fight.jpg"/>
+                        <img src="<%=request.getContextPath()%>/img/fight.jpg"/>
                     </div>
                 </div>
             </div>
@@ -196,11 +197,11 @@
 <!-- /container -->
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
-<script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.1.min.js"><\/script>')</script>
+<script>window.jQuery || document.write('<script src="<%=request.getContextPath()%>/js/vendor/jquery-1.10.1.min.js"><\/script>')</script>
 
-<script src="js/vendor/bootstrap.min.js"></script>
+<script src="<%=request.getContextPath()%>/js/vendor/bootstrap.min.js"></script>
 
-<script src="js/main.js"></script>
+<script src="<%=request.getContextPath()%>/js/main.js"></script>
 
 <script>
     var _gaq = [

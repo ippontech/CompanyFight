@@ -1,4 +1,4 @@
-package fr.ippon.companyfight.rest;
+package fr.ippon.companyfight.web.rest;
 
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;

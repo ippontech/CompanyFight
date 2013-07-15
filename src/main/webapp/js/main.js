@@ -2,6 +2,7 @@ function FightController($scope, $http) {
     $scope.master = {};
 
     $scope.fight = function (company1, company2) {
+        location.hash = '#' + company1.name + '/' + company2.name;
         $scope.fetchData(company1);
         $scope.fetchData(company2);
     };
@@ -29,9 +30,23 @@ function FightController($scope, $http) {
     $scope.reset = function () {
         $scope.company1 = angular.copy($scope.master);
         $scope.company2 = angular.copy($scope.master);
+        location.hash = '';
     };
 
-    $scope.reset();
+    var hash = location.hash.slice(1);
+    if (hash != '') {
+        $scope.company1 = angular.copy($scope.master);
+        $scope.company2 = angular.copy($scope.master);
+        var companies = hash.split('/');
+        if (companies[0] != null && companies[1] != null) {
+            $scope.company1.name = companies[0];
+            $scope.company2.name = companies[1];
+        } else {
+            $scope.reset();
+        }
+    } else {
+        $scope.reset();
+    }
 }
 
 // The score is : (number of repositories + 0.5 bonus per fork) + (number of users + 0.5 bonus per follower)

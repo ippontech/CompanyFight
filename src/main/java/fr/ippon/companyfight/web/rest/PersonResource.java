@@ -1,4 +1,4 @@
-package fr.ippon.companyfight.rest;
+package fr.ippon.companyfight.web.rest;
 
 import fr.ippon.companyfight.model.Person;
 import fr.ippon.companyfight.repository.PersonRepository;

@@ -1,4 +1,4 @@
-package fr.ippon.companyfight.rest;
+package fr.ippon.companyfight.web.rest;
 
 import fr.ippon.companyfight.model.Organization;
 import fr.ippon.companyfight.service.OrganizationService;
