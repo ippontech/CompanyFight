@@ -81,4 +81,6 @@ public class Fight {
                 ", fightDate=" + fightDate +
                 "} " + super.toString();
     }
+
+
 }

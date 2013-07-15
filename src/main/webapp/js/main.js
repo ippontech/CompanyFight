@@ -1,17 +1,26 @@
-function FightController($scope, $http) {
+function FightController($scope, $http, $q) {
     $scope.master = {};
 
     $scope.fight = function (company1, company2) {
         location.hash = '#' + company1.name + '/' + company2.name;
-        $scope.fetchData(company1);
-        $scope.fetchData(company2);
+        var fetchCompany1 = $scope.fetchData(company1);
+        var fetchCompany2 = $scope.fetchData(company2);
+        $q.all([fetchCompany1, fetchCompany2]).then(function (arrayOfResults) {
+            if (arrayOfResults[0].status == 200 && arrayOfResults[1].status == 200) {
+                $http.post('rest/fight/' + company1.name + "/" + company2.name).success(function (data, status) {
+
+                }).error(function (data, status) {
+
+                });
+            }
+        });
     };
 
     $scope.fetchData = function (company) {
         company.error = "";
         company.avatarUrl = "";
         company.status = "Fetching data for " + company.name + "...";
-        $http.get('rest/organizations/' + company.name).success(function (data, status, headers, config) {
+        return $http.get('rest/organizations/' + company.name).success(function (data, status, headers, config) {
             company.status = "";
             if (status == 204) {
                 company.error = "Error! Company does not exist!";

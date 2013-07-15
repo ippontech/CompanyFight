@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <!--[if lt IE 7]>
 <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
@@ -44,6 +45,21 @@
         <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
 
     </div>
+
+    <table class="table table-striped">
+        <thead>
+            <td>Company #1</td>
+            <td>Company #2</td>
+            <td></td>
+        </thead>
+        <c:forEach var="fight" items="${fights}">
+            <tr>
+                <td>${fight.organization1.id}</td>
+                <td>${fight.organization2.id}</td>
+                <td><a href="<%=request.getContextPath()%>/fight#${fight.organization1.id}/${fight.organization2.id}">Fight again</a></td>
+            </tr>
+        </c:forEach>
+    </table>
 </div>
 <!-- /container -->
 

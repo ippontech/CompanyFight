@@ -31,7 +31,9 @@ public class OrganizationService {
             log.info("Organization already exists!");
             Calendar testCalendar = Calendar.getInstance();
             testCalendar.add(Calendar.MONTH, -1);
-            if (existingOrganization.getUpdatedAt().after(testCalendar.getTime())) {
+            if (existingOrganization.getUpdatedAt() != null &&
+                    existingOrganization.getUpdatedAt().after(testCalendar.getTime())) {
+
                 return existingOrganization;
             } else {
                 log.info("The organization is more than one month old, refreshing it!");
