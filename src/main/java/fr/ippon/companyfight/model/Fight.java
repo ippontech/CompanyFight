@@ -79,8 +79,6 @@ public class Fight {
                 ", organization1=" + organization1.getId() +
                 ", organization2=" + organization2.getId() +
                 ", fightDate=" + fightDate +
-                "} " + super.toString();
+                "}";
     }
-
-
 }

@@ -13,8 +13,8 @@ public class OrganizationRepository {
     @PersistenceContext
     private EntityManager em;
 
-    public void createOrganization(Organization organization) {
-        em.persist(organization);
+    public Organization createOrUpdateOrganization(Organization organization) {
+        return em.merge(organization);
     }
 
     public Organization findOrganization(String name) {

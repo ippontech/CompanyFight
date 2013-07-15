@@ -35,12 +35,10 @@ public class OrganizationService {
                     existingOrganization.getUpdatedAt().after(testCalendar.getTime())) {
 
                 return existingOrganization;
-            } else {
-                log.info("The organization is more than one month old, refreshing it!");
-                organizationRepository.deleteOrganization(existingOrganization);
             }
+            log.info("The organization is more than one month old, refreshing it!");
         }
-        log.info("Initializing an organization from Github");
+        log.info("Fetching an organization from Github");
         Organization organization = githubService.fetchOrganizationFromGithub(name);
         if (organization != null) {
             log.info("Organization fetched from Github");
@@ -48,10 +46,10 @@ public class OrganizationService {
                 personRepository.createOrUpdatePerson(person);
             }
             organization.setUpdatedAt(Calendar.getInstance().getTime());
-            organizationRepository.createOrganization(organization);
+            organization = organizationRepository.createOrUpdateOrganization(organization);
             return organization;
         } else {
-            log.info("Could not retrieve organization");
+            log.info("Could not retrieve organization from Github");
             return null;
         }
     }

@@ -61,6 +61,6 @@ public class Repository implements Serializable {
                 "url='" + url + '\'' +
                 ", name='" + name + '\'' +
                 ", forks=" + forks +
-                "} " + super.toString();
+                "}";
     }
 }

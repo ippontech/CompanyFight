@@ -25,6 +25,9 @@ public class Organization implements Serializable {
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Set<Repository> repositories = new HashSet<Repository>();
 
+    @OneToMany(cascade = CascadeType.PERSIST)
+    private Set<Score> scores = new HashSet<Score>();
+
     public String getId() {
         return id;
     }
@@ -73,12 +76,24 @@ public class Organization implements Serializable {
         this.repositories = repositories;
     }
 
+    public Set<Score> getScores() {
+        return scores;
+    }
+
+    public void setScores(Set<Score> scores) {
+        this.scores = scores;
+    }
+
     public void addMember(Person person) {
         members.add(person);
     }
 
     public void addRepository(Repository repository) {
         repositories.add(repository);
+    }
+
+    public void addScore(Score score) {
+        scores.add(score);
     }
 
     @Override
@@ -105,6 +120,6 @@ public class Organization implements Serializable {
                 ", followersCount=" + followersCount +
                 ", avatarUrl='" + avatarUrl + '\'' +
                 ", updatedAt=" + updatedAt +
-                "} " + super.toString();
+                "}";
     }
 }

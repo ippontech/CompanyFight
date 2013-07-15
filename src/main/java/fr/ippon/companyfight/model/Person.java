@@ -83,6 +83,6 @@ public class Person implements Serializable {
         return "Person{" +
                 ", login='" + login + '\'' +
                 ", followersCount=" + followersCount +
-                "} " + super.toString();
+                "}";
     }
 }
