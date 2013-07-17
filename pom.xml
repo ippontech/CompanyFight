@@ -10,7 +10,7 @@
     <name>Github Company Fight</name>
 
     <properties>
-        <version.java>1.7</version.java>
+        <version.java>1.6</version.java>
         <version.javaee>7.0</version.javaee>
         <version.junit>4.11</version.junit>
         <version.arquillian>1.1.0.Final</version.arquillian>
