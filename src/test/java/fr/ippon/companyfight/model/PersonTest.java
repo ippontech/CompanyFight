@@ -6,7 +6,6 @@ import static org.junit.Assert.assertNotNull;
 
 public class PersonTest {
 
-
     @Test
     public void shouldValidateAPerson() {
 

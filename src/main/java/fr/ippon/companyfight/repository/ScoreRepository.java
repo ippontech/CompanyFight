@@ -13,8 +13,4 @@ public class ScoreRepository {
     @PersistenceContext
     private EntityManager em;
 
-    public void createScore(Score score) {
-        score.setScoreDate(Calendar.getInstance().getTime());
-        em.persist(score);
-    }
 }

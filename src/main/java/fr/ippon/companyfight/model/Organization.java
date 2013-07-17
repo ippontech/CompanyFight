@@ -1,5 +1,7 @@
 package fr.ippon.companyfight.model;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
@@ -25,7 +27,8 @@ public class Organization implements Serializable {
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Set<Repository> repositories = new HashSet<Repository>();
 
-    @OneToMany(cascade = CascadeType.PERSIST)
+    @OneToMany(mappedBy = "organization", cascade = CascadeType.PERSIST)
+    @JsonIgnore
     private Set<Score> scores = new HashSet<Score>();
 
     public String getId() {

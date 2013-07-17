@@ -19,6 +19,9 @@ public class Score {
     @Temporal(TemporalType.DATE)
     private Date scoreDate;
 
+    @ManyToOne
+    private Organization organization;
+
     public String getScoreId() {
         return scoreId;
     }
@@ -41,6 +44,14 @@ public class Score {
 
     public void setScoreDate(Date scoreDate) {
         this.scoreDate = scoreDate;
+    }
+
+    public Organization getOrganization() {
+        return organization;
+    }
+
+    public void setOrganization(Organization organization) {
+        this.organization = organization;
     }
 
     @Override
@@ -66,6 +77,7 @@ public class Score {
                 "scoreId='" + scoreId + '\'' +
                 ", value=" + value +
                 ", scoreDate=" + scoreDate +
-                "} " + super.toString();
+                ", organization=" + organization.getId() +
+                "}";
     }
 }
