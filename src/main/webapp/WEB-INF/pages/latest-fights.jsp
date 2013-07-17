@@ -38,7 +38,7 @@
     <a href="https://github.com/ippontech/CompanyFight"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub"></a>
 
     <div class="well text-center">
-        <h1>Latest Fights</h1>
+        <h1>30 Latest Fights</h1>
         <a href="https://twitter.com/share" class="twitter-share-button" data-text="Have a fight with my company at http://fight.ippon.fr" data-count="none">Tweet</a>
         <br/>
         [ <a href="<%=request.getContextPath()%>/fight">Fight</a> | <a href="<%=request.getContextPath()%>/high-scores">High scores</a> ]
@@ -54,8 +54,18 @@
         </thead>
         <c:forEach var="fight" items="${fights}">
             <tr>
-                <td>${fight.organization1.id}</td>
-                <td>${fight.organization2.id}</td>
+                <td>
+                    <a href="https://github.com/${fight.organization1.id}" target="_blank">
+                        <img src="${fight.organization1.avatarUrl}" alt="" class="img-rounded img-small">
+                        ${fight.organization1.id}
+                    </a>
+                </td>
+                <td>
+                    <a href="https://github.com/${fight.organization2.id}" target="_blank">
+                        <img src="${fight.organization2.avatarUrl}" alt="" class="img-rounded img-small">
+                            ${fight.organization2.id}
+                    </a>
+                </td>
                 <td><a href="<%=request.getContextPath()%>/fight#${fight.organization1.id}/${fight.organization2.id}">Fight again</a></td>
             </tr>
         </c:forEach>

@@ -96,14 +96,18 @@
                 <div class="row">
                     <div class="span6 text-center">
                         <div class="alert alert-block alert-success">
-                            <h2><img src="{{company1.avatarUrl}}" alt="" class="img-rounded img-medium"> Winner</h2>
-                            <p>Score : {{company1.score}}</p>
+                            <a href="https://github.com/{{company1.name}}" target="_blank">
+                                <h2><img src="{{company1.avatarUrl}}" alt="" class="img-rounded img-medium"> Winner</h2>
+                                <p>Score : {{company1.score}}</p>
+                            </a>
                         </div>
                     </div>
                     <div class="span6 text-center">
                         <div class="alert alert-block alert-error">
-                            <h2><img src="{{company2.avatarUrl}}" alt="" class="img-rounded img-medium"> Loser</h2>
-                            <p>Score : {{company2.score}}</p>
+                            <a href="https://github.com/{{company2.name}}" target="_blank">
+                                <h2><img src="{{company2.avatarUrl}}" alt="" class="img-rounded img-medium"> Loser</h2>
+                                <p>Score : {{company2.score}}</p>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -112,14 +116,18 @@
                 <div class="row">
                     <div class="span6 text-center">
                         <div class="alert alert-block alert-error">
-                            <h2><img src="{{company1.avatarUrl}}" alt="" class="img-rounded img-medium"> Loser</h2>
-                            <p>Score : {{company1.score}}</p>
+                            <a href="https://github.com/{{company1.name}}" target="_blank">
+                                <h2><img src="{{company1.avatarUrl}}" alt="" class="img-rounded img-medium"> Loser</h2>
+                                <p>Score : {{company1.score}}</p>
+                            </a>
                         </div>
                     </div>
                     <div class="span6 text-center">
                         <div class="alert alert-block alert-success">
-                            <h2><img src="{{company2.avatarUrl}}" alt="" class="img-rounded img-medium"> Winner</h2>
-                            <p>Score : {{company2.score}}</p>
+                            <a href="https://github.com/{{company2.name}}" target="_blank">
+                              <h2><img src="{{company2.avatarUrl}}" alt="" class="img-rounded img-medium"> Winner</h2>
+                              <p>Score : {{company2.score}}</p>
+                            </a>
                         </div>
                     </div>
                 </div>
