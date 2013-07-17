@@ -28,9 +28,8 @@ Installation
 The application uses [the GitHub API for Java](http://github-api.kohsuke.org/), if you want to do more than 60
 requests per hour, you need to create the ~/.github property file, which should have the following two values:
 
-`login=jdubois`
-
-`password=ippon`
+`login=jdubois<br/>
+password=ippon`
 
 Alternatively, you can have just the OAuth token in this file:
 
