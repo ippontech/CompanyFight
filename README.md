@@ -30,6 +30,7 @@ requests per hour, you need to create the ~/.github property file, which should 
 
 `
 login=jdubois
+
 password=ippon
 `
 
