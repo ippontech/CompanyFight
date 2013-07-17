@@ -70,8 +70,10 @@ public class OrganizationService {
         Iterator<Repository> repoIterator = organization.getRepositories().iterator();
         while (repoIterator.hasNext()) {
             Repository repository = repoIterator.next();
-            score += 10;
-            score += repository.getForks() * 5;
+            if (repository.getForks() > 0) {
+                score += 10;
+                score += repository.getForks() * 5;
+            }
         }
         Iterator<Person> personIterator = organization.getMembers().iterator();
         while (personIterator.hasNext()) {
