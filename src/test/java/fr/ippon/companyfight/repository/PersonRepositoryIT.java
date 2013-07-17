@@ -23,7 +23,7 @@ import static org.junit.Assert.*;
 import static org.junit.Assert.assertEquals;
 
 @RunWith(Arquillian.class)
-public class PersonRepositoryTest {
+public class PersonRepositoryIT {
 
     @Inject
     private PersonRepository personRepository;
