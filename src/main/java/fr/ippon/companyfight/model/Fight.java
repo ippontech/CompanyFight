@@ -20,7 +20,7 @@ public class Fight {
     @ManyToOne
     private Organization organization2;
 
-    @Temporal(TemporalType.DATE)
+    @Temporal(TemporalType.TIMESTAMP)
     private Date fightDate;
 
     public String getFightId() {

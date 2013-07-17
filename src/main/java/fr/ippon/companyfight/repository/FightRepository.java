@@ -31,8 +31,11 @@ public class FightRepository {
     public List<Fight> findLatestFights() {
         CriteriaBuilder cb = em.getCriteriaBuilder();
         CriteriaQuery<Fight> cq = cb.createQuery(Fight.class);
-        Root<Fight> Fight = cq.from(Fight.class);
-        cq.select(Fight);
+        Root<Fight> fight = cq.from(Fight.class);
+        cq.orderBy(cb.asc(fight.get("fightDate")));
+
+
+        cq.select(fight);
         TypedQuery<Fight> q = em.createQuery(cq);
         List<Fight> allFights = q.getResultList();
         return allFights;
