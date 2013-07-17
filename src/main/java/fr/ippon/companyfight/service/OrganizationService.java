@@ -38,6 +38,7 @@ public class OrganizationService {
             if (existingOrganization.getUpdatedAt() != null &&
                     existingOrganization.getUpdatedAt().after(testCalendar.getTime())) {
 
+                existingOrganization.setScore(calculateScore(existingOrganization));
                 return existingOrganization;
             }
             log.info("The organization is more than one month old, refreshing it!");
@@ -52,8 +53,9 @@ public class OrganizationService {
             organization.setUpdatedAt(Calendar.getInstance().getTime());
             organization = organizationRepository.createOrUpdateOrganization(organization);
 
+            organization.setScore(calculateScore(organization));
             Score score = new Score();
-            score.setValue(calculateScore(organization));
+            score.setValue(organization.getScore());
             score.setScoreDate(Calendar.getInstance().getTime());
             score.setOrganization(organization);
             organization.addScore(score);

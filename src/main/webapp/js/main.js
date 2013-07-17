@@ -18,7 +18,7 @@ function FightController($scope, $http, $q) {
 
     $scope.fetchData = function (company) {
         company.error = "";
-        company.avatarUrl = "";
+        company.avatarUrl = null;
         company.status = "Fetching data for " + company.name + "...";
         return $http.get('rest/organizations/' + company.name).success(function (data, status, headers, config) {
             company.status = "";
@@ -28,7 +28,7 @@ function FightController($scope, $http, $q) {
                 company.avatarUrl = data.avatarUrl;
                 company.repositories = data.repositories;
                 company.members = data.members;
-                company.score = calculateScore(company);
+                company.score = data.score;
             }
         }).error(function (data, status, headers, config) {
                 company.status = "";
@@ -56,18 +56,4 @@ function FightController($scope, $http, $q) {
     } else {
         $scope.reset();
     }
-}
-
-// The score is : (number of repositories + 0.5 bonus per fork) + (number of users + 0.5 bonus per follower)
-function calculateScore(company) {
-    score = 0;
-    for(var i= 0; i < company.repositories.length; i++) {
-        score++;
-        score += company.repositories[i].forks * 0.5;
-    }
-    for(var i= 0; i < company.members.length; i++) {
-        score ++;
-        score += company.members[i].followersCount * 0.5;
-    }
-    return score;
 }

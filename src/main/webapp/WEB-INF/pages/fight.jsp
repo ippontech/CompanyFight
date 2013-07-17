@@ -85,7 +85,7 @@
                     </div>
                 </div>
             </div>
-            <div ng-show="company1.avatarUrl == null && company2.avatarUrl == null">
+            <div ng-show="company1.avatarUrl == null || company2.avatarUrl == null">
                 <div class="row">
                     <div class="span12 text-center">
                         <img src="<%=request.getContextPath()%>/img/fight.jpg"/>

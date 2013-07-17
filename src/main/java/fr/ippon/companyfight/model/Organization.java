@@ -18,6 +18,9 @@ public class Organization implements Serializable {
 
     private String avatarUrl;
 
+    @Transient
+    private int score;
+
     @Temporal(TemporalType.DATE)
     private Date updatedAt;
 
@@ -53,6 +56,14 @@ public class Organization implements Serializable {
 
     public void setAvatarUrl(String avatarUrl) {
         this.avatarUrl = avatarUrl;
+    }
+
+    public int getScore() {
+        return score;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
     }
 
     public Date getUpdatedAt() {

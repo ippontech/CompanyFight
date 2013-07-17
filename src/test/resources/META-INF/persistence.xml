@@ -9,8 +9,8 @@
            data source, this example data source is just for development and testing! -->
         <jta-data-source>java:jboss/datasources/test/CompanyFight</jta-data-source>
         <properties>
-            <!-- Properties for Hibernate
-            <property name="hibernate.hbm2ddl.auto" value="create" />-->
+            <!-- Properties for Hibernate-->
+            <property name="hibernate.hbm2ddl.auto" value="create-drop" />
             <property name="hibernate.show_sql" value="false"/>
         </properties>
     </persistence-unit>
