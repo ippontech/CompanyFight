@@ -1,11 +1,18 @@
 package fr.ippon.companyfight.model;
 
 import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Index;
 
 import javax.persistence.*;
 import java.util.Date;
 
-@Entity
+@Entity(name = "score")
+@org.hibernate.annotations.Table(
+        appliesTo = "score",
+        indexes = {
+                @Index(name="score_value_index", columnNames = "value"),
+        }
+)
 public class Score {
 
     @Id
@@ -16,7 +23,7 @@ public class Score {
 
     private int value;
 
-    @Temporal(TemporalType.DATE)
+    @Temporal(TemporalType.TIMESTAMP)
     private Date scoreDate;
 
     @ManyToOne

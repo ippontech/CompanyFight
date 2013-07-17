@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <!--[if lt IE 7]>
 <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
@@ -42,6 +43,36 @@
         <br/>
         [ <a href="<%=request.getContextPath()%>/fight">Fight</a> | <a href="<%=request.getContextPath()%>/latest-fights">Latest fights</a> ]
         <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+    </div>
+
+    <div class="row">
+        <div class="span2"></div>
+        <div class="span8">
+            <table class="table table-striped">
+                <thead>
+                <td></td>
+                <td>Company</td>
+                <td>Score</td>
+                <td></td>
+                </thead>
+                <c:forEach var="score" items="${scores}" varStatus="status">
+                    <tr>
+                        <td>${status.index + 1}</td>
+                        <td>
+                            <a href="https://github.com/${score.organization.id}" target="_blank">
+                                <img src="${score.organization.avatarUrl}" alt="" class="img-rounded img-small">
+                                ${score.organization.id}
+                            </a>
+                        </td>
+                        <td>
+                            ${score.value}
+                        </td>
+                        <td><a href="<%=request.getContextPath()%>/fight#${score.organization.id}/">Fight!</a></td>
+                    </tr>
+                </c:forEach>
+            </table>
+        </div>
+        <div class="span2"></div>
     </div>
 </div>
 <!-- /container -->

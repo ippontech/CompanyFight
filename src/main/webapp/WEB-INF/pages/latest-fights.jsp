@@ -46,30 +46,36 @@
 
     </div>
 
-    <table class="table table-striped">
-        <thead>
-            <td>Company #1</td>
-            <td>Company #2</td>
-            <td></td>
-        </thead>
-        <c:forEach var="fight" items="${fights}">
-            <tr>
-                <td>
-                    <a href="https://github.com/${fight.organization1.id}" target="_blank">
-                        <img src="${fight.organization1.avatarUrl}" alt="" class="img-rounded img-small">
-                        ${fight.organization1.id}
-                    </a>
-                </td>
-                <td>
-                    <a href="https://github.com/${fight.organization2.id}" target="_blank">
-                        <img src="${fight.organization2.avatarUrl}" alt="" class="img-rounded img-small">
-                            ${fight.organization2.id}
-                    </a>
-                </td>
-                <td><a href="<%=request.getContextPath()%>/fight#${fight.organization1.id}/${fight.organization2.id}">Fight again</a></td>
-            </tr>
-        </c:forEach>
-    </table>
+    <div class="row">
+        <div class="span2"></div>
+        <div class="span8">
+            <table class="table table-striped">
+                <thead>
+                    <td>Company #1</td>
+                    <td>Company #2</td>
+                    <td></td>
+                </thead>
+                <c:forEach var="fight" items="${fights}">
+                    <tr>
+                        <td>
+                            <a href="https://github.com/${fight.organization1.id}" target="_blank">
+                                <img src="${fight.organization1.avatarUrl}" alt="" class="img-rounded img-small">
+                                ${fight.organization1.id}
+                            </a>
+                        </td>
+                        <td>
+                            <a href="https://github.com/${fight.organization2.id}" target="_blank">
+                                <img src="${fight.organization2.avatarUrl}" alt="" class="img-rounded img-small">
+                                    ${fight.organization2.id}
+                            </a>
+                        </td>
+                        <td><a href="<%=request.getContextPath()%>/fight#${fight.organization1.id}/${fight.organization2.id}">Fight again</a></td>
+                    </tr>
+                </c:forEach>
+            </table>
+        </div>
+        <div class="span2"></div>
+    </div>
 </div>
 <!-- /container -->
 

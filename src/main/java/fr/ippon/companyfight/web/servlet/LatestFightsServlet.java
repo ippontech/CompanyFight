@@ -18,9 +18,6 @@ import java.util.logging.Logger;
 public class LatestFightsServlet extends HttpServlet {
 
     @Inject
-    private Logger log;
-
-    @Inject
     private FightService fightService;
 
     @Override
