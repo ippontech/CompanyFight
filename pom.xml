@@ -12,9 +12,7 @@
     <properties>
         <version.java>1.7</version.java>
         <version.javaee>7.0</version.javaee>
-        <version.derby>10.10.1.1</version.derby>
         <version.junit>4.11</version.junit>
-        <version.mockito>1.9.5</version.mockito>
         <version.arquillian>1.1.0.Final</version.arquillian>
         <version.arquillian.jboss>7.2.0.Final</version.arquillian.jboss>
 
@@ -33,6 +31,28 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     </properties>
+
+    <profiles>
+        <profile>
+            <id>default</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <hibernate.hbm2ddl.auto>create</hibernate.hbm2ddl.auto>
+                <hibernate.show_sql>true</hibernate.show_sql>
+                <hibernate.generate_statistics>true</hibernate.generate_statistics>
+            </properties>
+        </profile>
+        <profile>
+            <id>prod</id>
+            <properties>
+                <hibernate.hbm2ddl.auto>validate</hibernate.hbm2ddl.auto>
+                <hibernate.show_sql>false</hibernate.show_sql>
+                <hibernate.generate_statistics>false</hibernate.generate_statistics>
+            </properties>
+        </profile>
+    </profiles>
 
     <dependencyManagement>
         <dependencies>
@@ -165,12 +185,6 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>org.mockito</groupId>
-            <artifactId>mockito-all</artifactId>
-            <version>${version.mockito}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>${version.junit}</version>
@@ -205,6 +219,15 @@
     <build>
         <finalName>company-fight</finalName>
 
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+                <includes>
+                    <include>**/*</include>
+                </includes>
+            </resource>
+        </resources>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
