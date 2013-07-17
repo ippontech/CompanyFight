@@ -37,13 +37,14 @@
 <div class="container">
     <a href="https://github.com/ippontech/CompanyFight"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub"></a>
 
-    <div class="well text-center">
-        <h1>30 Latest Fights</h1>
-        <a href="https://twitter.com/share" class="twitter-share-button" data-text="Have a fight with my company at http://fight.ippon.fr" data-count="none">Tweet</a>
-        <br/>
-        [ <a href="<%=request.getContextPath()%>/fight">Fight</a> | <a href="<%=request.getContextPath()%>/high-scores">High scores</a> ]
-        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-
+    <div class="navbar navbar-inverse">
+        <div class="navbar-inner">
+            <ul class="nav">
+                <li><a href="<%=request.getContextPath()%>/fight">Fight</a></li>
+                <li class="active"><a href="#">Latest fights</a></li>
+                <li><a href="<%=request.getContextPath()%>/high-scores">High scores</a></li>
+            </ul>
+        </div>
     </div>
 
     <div class="row">
@@ -76,6 +77,12 @@
         </div>
         <div class="span2"></div>
     </div>
+    <hr>
+
+    <footer>
+        <p><a href="http://www.ippon.fr">&copy; Ippon Technologies 2013</a></p>
+    </footer>
+
 </div>
 <!-- /container -->
 
