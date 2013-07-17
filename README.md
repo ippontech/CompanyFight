@@ -12,7 +12,7 @@ Github Company Fight is made with the following technologies :
 - [JBoss 7](http://www.jboss.org/jbossas)
 - [PostgreSQL](http://www.postgresql.org/)
 
-Tatami is developped by [Ippon Technologies](http://www.ippon.fr)
+Github Company Fight is developped by [Ippon Technologies](http://www.ippon.fr)
 
 Installation
 ----------------
