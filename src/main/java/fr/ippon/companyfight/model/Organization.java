@@ -24,10 +24,10 @@ public class Organization implements Serializable {
     @Temporal(TemporalType.DATE)
     private Date updatedAt;
 
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany
     private Set<Person> members = new HashSet<Person>();
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.ALL)
     private Set<Repository> repositories = new HashSet<Repository>();
 
     @OneToMany(mappedBy = "organization", cascade = CascadeType.PERSIST)

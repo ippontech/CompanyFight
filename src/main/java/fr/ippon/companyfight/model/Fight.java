@@ -9,10 +9,8 @@ import java.util.Date;
 public class Fight {
 
     @Id
-    @GeneratedValue(generator = "hibernate-uuid")
-    @GenericGenerator(name = "hibernate-uuid", strategy = "uuid2")
-    @Column(name = "uuid", unique = true)
-    private String fightId;
+    @GeneratedValue(strategy=GenerationType.AUTO)
+    private long fightId;
 
     @ManyToOne
     private Organization organization1;
@@ -20,14 +18,11 @@ public class Fight {
     @ManyToOne
     private Organization organization2;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date fightDate;
-
-    public String getFightId() {
+    public long getFightId() {
         return fightId;
     }
 
-    public void setFightId(String fightId) {
+    public void setFightId(long fightId) {
         this.fightId = fightId;
     }
 
@@ -47,14 +42,6 @@ public class Fight {
         this.organization2 = organization2;
     }
 
-    public Date getFightDate() {
-        return fightDate;
-    }
-
-    public void setFightDate(Date fightDate) {
-        this.fightDate = fightDate;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -62,14 +49,14 @@ public class Fight {
 
         Fight fight = (Fight) o;
 
-        if (fightId != null ? !fightId.equals(fight.fightId) : fight.fightId != null) return false;
+        if (fightId != fight.fightId) return false;
 
         return true;
     }
 
     @Override
     public int hashCode() {
-        return fightId != null ? fightId.hashCode() : 0;
+        return (int) (fightId ^ (fightId >>> 32));
     }
 
     @Override
@@ -78,7 +65,6 @@ public class Fight {
                 "fightId='" + fightId + '\'' +
                 ", organization1=" + organization1.getId() +
                 ", organization2=" + organization2.getId() +
-                ", fightDate=" + fightDate +
                 "}";
     }
 }

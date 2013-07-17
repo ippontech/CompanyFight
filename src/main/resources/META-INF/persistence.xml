@@ -9,9 +9,9 @@
            data source, this example data source is just for development and testing! -->
         <jta-data-source>java:jboss/datasources/CompanyFight</jta-data-source>
         <properties>
-            <!-- Properties for Hibernate
-            <property name="hibernate.hbm2ddl.auto" value="create" />-->
-            <property name="hibernate.show_sql" value="false"/>
+            <!-- Properties for Hibernate-->
+            <property name="hibernate.hbm2ddl.auto" value="create" />
+            <property name="hibernate.show_sql" value="true"/>
             <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/>
         </properties>
     </persistence-unit>

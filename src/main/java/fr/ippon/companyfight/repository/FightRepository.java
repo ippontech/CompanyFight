@@ -21,7 +21,6 @@ public class FightRepository {
 
     public Fight createFight(Organization organization1, Organization organization2) {
         Fight fight = new Fight();
-        fight.setFightDate(Calendar.getInstance().getTime());
         fight.setOrganization1(organization1);
         fight.setOrganization2(organization2);
         em.persist(fight);
@@ -32,9 +31,7 @@ public class FightRepository {
         CriteriaBuilder cb = em.getCriteriaBuilder();
         CriteriaQuery<Fight> cq = cb.createQuery(Fight.class);
         Root<Fight> fight = cq.from(Fight.class);
-        cq.orderBy(cb.asc(fight.get("fightDate")));
-
-
+        cq.orderBy(cb.desc(fight.get("fightId")));
         cq.select(fight);
         TypedQuery<Fight> q = em.createQuery(cq);
         List<Fight> allFights = q.getResultList();
