@@ -48,7 +48,7 @@
         <profile>
             <id>prod</id>
             <properties>
-                <finalName>root</finalName>
+                <finalName>ROOT</finalName>
                 <hibernate.hbm2ddl.auto>validate</hibernate.hbm2ddl.auto>
                 <hibernate.show_sql>false</hibernate.show_sql>
                 <hibernate.generate_statistics>false</hibernate.generate_statistics>
