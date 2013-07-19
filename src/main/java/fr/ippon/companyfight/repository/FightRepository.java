@@ -34,7 +34,7 @@ public class FightRepository {
         cq.orderBy(cb.desc(fight.get("fightId")));
         cq.select(fight);
         TypedQuery<Fight> q = em.createQuery(cq);
-        q.setMaxResults(30);
+        q.setMaxResults(100);
         List<Fight> allFights = q.getResultList();
         return allFights;
     }

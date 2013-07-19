@@ -26,7 +26,7 @@ public class ScoreRepository {
         cq.orderBy(cb.desc(scoreRoot.get("value")));
         cq.select(scoreRoot);
         TypedQuery<Score> q = em.createQuery(cq);
-        q.setMaxResults(30);
+        q.setMaxResults(100);
         List<Score> highScores = q.getResultList();
         return highScores;
     }
