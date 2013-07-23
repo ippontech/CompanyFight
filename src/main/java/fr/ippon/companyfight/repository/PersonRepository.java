@@ -11,7 +11,7 @@ import java.util.List;
 public class PersonRepository {
 
     @PersistenceContext
-    private EntityManager em;
+    EntityManager em;
 
     public Person createOrUpdatePerson(Person person) {
         return em.merge(person);
