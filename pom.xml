@@ -325,10 +325,6 @@
                                     <enabled>true</enabled>
                                     <enable>true</enable>
                                     <driver-name>postgresql.jar</driver-name>
-                                    <security.user-name>sa</security.user-name>
-                                    <security.password>sa</security.password>
-                                    <user-name>sa</user-name>
-                                    <password>sa</password>
                                     <use-ccm>false</use-ccm>
                                 </properties>
                             </resource>
