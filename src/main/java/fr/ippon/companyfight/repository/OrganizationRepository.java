@@ -1,10 +1,12 @@
 package fr.ippon.companyfight.repository;
 
-import fr.ippon.companyfight.model.Organization;
+import java.util.List;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+
+import fr.ippon.companyfight.model.Organization;
 
 @ApplicationScoped
 public class OrganizationRepository {
@@ -18,6 +20,10 @@ public class OrganizationRepository {
 
     public Organization findOrganization(String name) {
         return em.find(Organization.class, name);
+    }
+
+    public List<Organization> findAll() {
+    	return em.createNamedQuery("findAllOrganizations").getResultList();
     }
 
     public void deleteOrganization(Organization organization) {
