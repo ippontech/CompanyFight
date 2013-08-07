@@ -3,12 +3,19 @@ package fr.ippon.companyfight.model;
 import org.codehaus.jackson.annotate.JsonIgnore;
 
 import javax.persistence.*;
+
 import java.io.Serializable;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
 @Entity
+@NamedQueries({
+    @NamedQuery(
+            name = "findAllOrganizations",
+            query = "SELECT o FROM Organization o"
+    )
+})
 public class Organization implements Serializable {
 
     @Id
@@ -27,7 +34,7 @@ public class Organization implements Serializable {
     @ManyToMany
     private Set<Person> members = new HashSet<Person>();
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Set<Repository> repositories = new HashSet<Repository>();
 
     @OneToMany(mappedBy = "organization", cascade = CascadeType.PERSIST)
