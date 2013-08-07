@@ -10,11 +10,12 @@
     <name>Github Company Fight</name>
 
     <properties>
-        <version.java>1.6</version.java>
+        <version.java>1.7</version.java>
         <version.javaee>7.0</version.javaee>
         <version.junit>4.11</version.junit>
-        <version.arquillian>1.1.0.Final</version.arquillian>
+        <version.arquillian>1.1.1.Final</version.arquillian>
         <version.arquillian.jboss>7.2.0.Final</version.arquillian.jboss>
+		<version.arquillian.persistence.extension>1.0.0.Alpha6</version.arquillian.persistence.extension>
 
         <!--Maven Plugins-->
         <version.maven.war.plugin>2.3</version.maven.war.plugin>
@@ -197,6 +198,12 @@
             <artifactId>arquillian-junit-container</artifactId>
             <scope>test</scope>
         </dependency>
+		<dependency>
+		  <groupId>org.jboss.arquillian.extension</groupId>
+		  <artifactId>arquillian-persistence-impl</artifactId>
+		  <version>${version.arquillian.persistence.extension}</version>
+		  <scope>test</scope>
+		</dependency>
         <dependency>
             <groupId>org.jboss.spec</groupId>
             <artifactId>jboss-javaee-6.0</artifactId>
