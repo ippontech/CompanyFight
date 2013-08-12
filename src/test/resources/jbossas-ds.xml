@@ -7,7 +7,7 @@
     <datasource enabled="true"
                 jndi-name="jboss/datasources/test/CompanyFight"
                 pool-name="ArquillianEmbeddedH2Pool">
-        <connection-url>jdbc:h2:mem:arquillian;DB_CLOSE_DELAY=-1</connection-url>
+        <connection-url>jdbc:postgresql://localhost/fight</connection-url>
         <driver>h2</driver>
     </datasource>
 </datasources>
