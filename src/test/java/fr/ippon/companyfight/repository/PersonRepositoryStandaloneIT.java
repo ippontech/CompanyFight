@@ -1,58 +1,52 @@
 package fr.ippon.companyfight.repository;
 
-import fr.ippon.companyfight.model.Person;
-import org.jboss.arquillian.container.test.api.Deployment;
-import org.jboss.arquillian.junit.Arquillian;
-import org.jboss.shrinkwrap.api.Archive;
-import org.jboss.shrinkwrap.api.ShrinkWrap;
-import org.jboss.shrinkwrap.api.asset.EmptyAsset;
-import org.jboss.shrinkwrap.api.spec.WebArchive;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-
-import javax.inject.Inject;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import javax.transaction.UserTransaction;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 import java.util.List;
 
-import static org.junit.Assert.*;
-import static org.junit.Assert.assertEquals;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 
-@RunWith(Arquillian.class)
-public class PersonRepositoryIT {
+import org.junit.After;
+import org.junit.AfterClass;
+import org.junit.Before;
+import org.junit.BeforeClass;
+import org.junit.Test;
 
-    @Inject
+import fr.ippon.companyfight.model.Person;
+
+public class PersonRepositoryStandaloneIT {
+
     private PersonRepository personRepository;
 
-    @Inject
-    UserTransaction utx;
-
-    @PersistenceContext
     private EntityManager em;
+	private static EntityManagerFactory entityManagerFactory;
+	
 
-    @Deployment
-    public static Archive<?> jar() {
-        return ShrinkWrap.create(WebArchive.class)
-                .addPackage(Person.class.getPackage())
-                .addPackage(PersonRepository.class.getPackage())
-                .addAsResource("META-INF/arquillian-persistence.xml","META-INF/persistence.xml")
-                .addAsWebInfResource("jbossas-ds.xml")
-                .addAsWebInfResource(EmptyAsset.INSTANCE, "beans.xml");
+    @BeforeClass
+    public static void createEMF() throws Exception {
+    	entityManagerFactory = Persistence.createEntityManagerFactory("primary");
     }
-
+    @AfterClass
+    public static void destroyEMF() throws Exception {
+    	entityManagerFactory.close();
+    }
+    
     @Before
     public void preparePersistenceTest() throws Exception {
-        utx.begin();
-        em.joinTransaction();
+    	em = entityManagerFactory.createEntityManager();
+    	em.getTransaction().begin();
+
+    	personRepository = new PersonRepository();
+    	personRepository.em = em;
     }
 
     @After
     public void rollbackTransaction() throws Exception {
-        utx.rollback();
+    	em.getTransaction().rollback();
+    	em = null;
     }
 
     @Test
